@@ -1,20 +1,11 @@
+{% extends 'base_adm.html' %}
+
+{% block title %}Login de Administrador{% endblock %}
+
 {% block content %}
 
-<link rel="stylesheet" type="text/css"
-  href="https://res.cloudinary.com/da4ebtflu/raw/upload/v1616550835/style.css_rovd3q.css">
-
-<div class='header'>
-
-  <a href="/traducao/lista_de_palavras/">
-    <img alt class='logo'
-      src='https://github.com/fga-eps-mds/2020.2-Projeto-Kokama-Wiki/raw/main/docs/assets/img/logo.png'>
-  </a>
-
-  <a class='logo-text' href="/traducao/lista_de_palavras/">Projeto Kokama</a>
-</div>
-
-<div class="box-admin-register">
-  <h2>Login</h2>
+<div id="content-box">
+  <h1 id='content-title'>Login</h1>
   <form action="/login/" method="post">
     {% csrf_token %}
 
@@ -33,7 +24,7 @@
       <label>Senha:</label>
     </div>
 
-    <input value="Entrar" name="submit" type="submit">
+    <input class='submit-buttom' value="Entrar" name="submit" type="submit">
   </form>
 </div>
 

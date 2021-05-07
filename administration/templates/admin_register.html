@@ -1,20 +1,13 @@
+{% extends 'base_adm.html' %}
+
+{% block title %}Registro de Administrador{% endblock %}
+
 {% block content %}
 
-<link rel="stylesheet" type="text/css"
-  href="https://res.cloudinary.com/da4ebtflu/raw/upload/v1616550835/style.css_rovd3q.css">
+<div id="content-box">
 
-<div class='header'>
+  <h1 id="content-title">Cadastrar Administrador</h1>
 
-  <a href="/traducao/lista_de_palavras/">
-    <img alt class='logo'
-      src='https://github.com/fga-eps-mds/2020.2-Projeto-Kokama-Wiki/raw/main/docs/assets/img/logo.png'>
-  </a>
-
-  <a class='logo-text' href="/traducao/lista_de_palavras/">Projeto Kokama</a>
-</div>
-
-<div class="box-admin-register">
-  <h2>Cadastrar novo Administrador</h2>
   <form action="/admin_register/" method="post">
     {% csrf_token %}
 
@@ -25,6 +18,7 @@
       <input name='username' type='text' required>
       <label>Nome de usuário:</label>
     </div>
+
     {% for error in form.password1.errors %}
     <p style="color: red">{{ error }}</p>
     {% endfor %}
@@ -32,6 +26,7 @@
       <input name='password1' type='password' required>
       <label>Senha:</label>
     </div>
+
     {% for error in form.password2.errors %}
     <p style="color: red">{{ error }}</p>
     {% endfor %}
@@ -40,7 +35,7 @@
       <label>Confirme a senha:</label>
     </div>
 
-    <input value="Cadastrar" name="submit" type="submit">
+    <input class='submit-buttom' value="Cadastrar" name="submit" type="submit">
   </form>
 </div>
 
