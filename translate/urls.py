@@ -15,20 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include, url
 from rest_framework import routers
-from dictionary.views import KokamaViewSet
-from administration.views import admin_register, login
+from dictionary.views import KokamaViewSet, PhrasesViewSet, WordListViewSet, add_translate
 
 
 router = routers.DefaultRouter()
-router.register(r'', KokamaViewSet)
+router.register(r'dicionario', KokamaViewSet, basename="dictionary")
+router.register(r'frases', PhrasesViewSet, basename="phrases")
+router.register(r'lista_de_palavras', WordListViewSet, basename="wordlist")
 
 urlpatterns = [
-    path('dicionario/', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('traducao/', include('dictionary.urls')),
-    path('admin_register/', admin_register),
-    path('login/', login),
-    path('', login, name ='login')
+    url(r'^traducao/adicionar_traducao/(?P<id>[0-9]*)$', add_translate, name="add_translate"),
+    path('traducao/', include(router.urls)),
+    path('', include(router.urls)),
 ]
